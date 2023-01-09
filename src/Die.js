@@ -3,7 +3,7 @@ import './Die.css';
 
 class Die extends Component {
   render() {
-    return <button className='Die'>Die</button>;
+    return <button className='Die'>{this.props.val}</button>;
   }
 }
 
