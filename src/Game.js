@@ -28,13 +28,32 @@ class Game extends Component {
       },
     };
     this.roll = this.roll.bind(this);
+    this.toggleLockUnlockDie = this.toggleLockUnlockDie.bind(this);
   }
 
   roll() {
     if (this.state.rollsLeft > 0) {
       this.setState((currState) => ({
-        dice: currState.dice.map((die, idx) => Math.ceil(Math.random() * 6)),
+        dice: currState.dice.map((die, idx) =>
+          currState.locked[idx] ? die : Math.ceil(Math.random() * 6)
+        ),
+        locked:
+          currState.rollsLeft > 1
+            ? currState.locked
+            : Array.from({ length: NUMBER_OF_DICE }).fill(true),
         rollsLeft: currState.rollsLeft - 1,
+      }));
+    }
+  }
+
+  toggleLockUnlockDie(idx) {
+    if (this.state.rollsLeft > 0) {
+      this.setState((currState) => ({
+        locked: [
+          ...currState.locked.slice(0, idx),
+          !currState.locked[idx],
+          ...currState.locked.slice(idx + 1),
+        ],
       }));
     }
   }
@@ -44,7 +63,11 @@ class Game extends Component {
       <div>
         <header>
           <section>
-            <Dice dice={this.state.dice} />
+            <Dice
+              dice={this.state.dice}
+              locked={this.state.locked}
+              toggleDie={this.toggleLockUnlockDie}
+            />
             <div>
               <button onClick={this.roll}>
                 {this.state.rollsLeft} Rerolls left

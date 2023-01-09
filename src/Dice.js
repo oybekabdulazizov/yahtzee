@@ -3,8 +3,15 @@ import Die from './Die';
 
 class Dice extends Component {
   renderedDice() {
-    const dice = this.props.dice.map((d, i) => <Die val={d} />);
-    return dice;
+    return this.props.dice.map((dieVal, idx) => (
+      <Die
+        toggleDie={this.props.toggleDie}
+        val={dieVal}
+        idx={idx}
+        key={idx}
+        locked={this.props.locked[idx]}
+      />
+    ));
   }
 
   render() {
