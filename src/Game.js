@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Dice from './Dice';
+import ScoreTable from './ScoreTable';
 
 const NUMBER_OF_DICE = 5;
 const NUMBER_OF_ROLLS = 3;
@@ -29,6 +30,7 @@ class Game extends Component {
     };
     this.roll = this.roll.bind(this);
     this.toggleLockUnlockDie = this.toggleLockUnlockDie.bind(this);
+    this.doScore = this.doScore.bind(this);
   }
 
   roll() {
@@ -58,6 +60,15 @@ class Game extends Component {
     }
   }
 
+  doScore(ruleName, rule) {
+    this.setState((currState) => ({
+      scores: { ...currState.scores, [ruleName]: rule(this.state.dice) },
+      rollsLeft: NUMBER_OF_ROLLS,
+      locked: Array.from({ length: NUMBER_OF_DICE }).fill(false),
+    }));
+    this.roll();
+  }
+
   render() {
     return (
       <div>
@@ -78,6 +89,7 @@ class Game extends Component {
             </div>
           </section>
         </header>
+        <ScoreTable scores={this.state.scores} doScore={this.doScore} />
       </div>
     );
   }
