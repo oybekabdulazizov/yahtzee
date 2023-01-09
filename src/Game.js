@@ -69,7 +69,10 @@ class Game extends Component {
               toggleDie={this.toggleLockUnlockDie}
             />
             <div>
-              <button onClick={this.roll}>
+              <button
+                onClick={this.roll}
+                disabled={this.state.locked.every((i) => i === true)}
+              >
                 {this.state.rollsLeft} Rerolls left
               </button>
             </div>
