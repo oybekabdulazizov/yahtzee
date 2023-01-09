@@ -47,7 +47,7 @@ class Game extends Component {
   }
 
   toggleLockUnlockDie(idx) {
-    if (this.state.rollsLeft > 0) {
+    if (this.state.rollsLeft > 0 && !this.state.dice.includes(0)) {
       this.setState((currState) => ({
         locked: [
           ...currState.locked.slice(0, idx),
