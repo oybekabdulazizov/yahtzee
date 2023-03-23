@@ -1,15 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { FunctionsContext } from './contexts/game.context';
 
 import './Die.css';
 
-export default function Die({ idx, toggleDie, locked, val }) {
-  const handleToggle = () => {
-    toggleDie(idx);
-  };
+export default function Die({ id, locked, val }) {
+  const { toggleDie } = useContext(FunctionsContext);
 
   let classDie = 'Die ' + (locked ? 'Die-locked' : '');
   return (
-    <button onClick={handleToggle} className={classDie}>
+    <button onClick={() => toggleDie(id)} className={classDie}>
       {val}
     </button>
   );

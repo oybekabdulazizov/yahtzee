@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { FunctionsContext, StateContext } from './contexts/game.context';
 
 import RuleRow from './RuleRow';
 import {
@@ -17,7 +18,10 @@ import {
   chance,
 } from './Rules';
 
-export default function ScoreTable({ scores, doScore }) {
+export default function ScoreTable() {
+  const { scores } = useContext(StateContext);
+  const { doScore } = useContext(FunctionsContext);
+
   return (
     <div>
       <section>

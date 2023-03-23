@@ -1,17 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { StateContext } from './contexts/game.context';
 
 import Die from './Die';
 
-export default function Dice({ dice, toggleDie, locked }) {
+export default function Dice() {
+  const state = useContext(StateContext);
+
   const renderedDice = () => {
-    return dice.map((dieVal, idx) => (
-      <Die
-        toggleDie={toggleDie}
-        val={dieVal}
-        idx={idx}
-        key={idx}
-        locked={locked[idx]}
-      />
+    return state.dice.map((dieVal, id) => (
+      <Die val={dieVal} id={id} key={id} locked={state.locked[id]} />
     ));
   };
 
