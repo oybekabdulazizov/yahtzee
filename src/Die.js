@@ -1,24 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
+
 import './Die.css';
 
-class Die extends Component {
-  constructor(props) {
-    super(props);
-    this.handleToggle = this.handleToggle.bind(this);
-  }
+export default function Die({ idx, toggleDie, locked, val }) {
+  const handleToggle = () => {
+    toggleDie(idx);
+  };
 
-  handleToggle() {
-    this.props.toggleDie(this.props.idx);
-  }
-
-  render() {
-    let classDie = 'Die ' + (this.props.locked ? 'Die-locked' : '');
-    return (
-      <button onClick={this.handleToggle} className={classDie}>
-        {this.props.val}
-      </button>
-    );
-  }
+  let classDie = 'Die ' + (locked ? 'Die-locked' : '');
+  return (
+    <button onClick={handleToggle} className={classDie}>
+      {val}
+    </button>
+  );
 }
-
-export default Die;

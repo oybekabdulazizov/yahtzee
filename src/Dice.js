@@ -1,22 +1,19 @@
-import React, { Component } from 'react';
+import React from 'react';
+
 import Die from './Die';
 
-class Dice extends Component {
-  renderedDice() {
-    return this.props.dice.map((dieVal, idx) => (
+export default function Dice({ dice, toggleDie, locked }) {
+  const renderedDice = () => {
+    return dice.map((dieVal, idx) => (
       <Die
-        toggleDie={this.props.toggleDie}
+        toggleDie={toggleDie}
         val={dieVal}
         idx={idx}
         key={idx}
-        locked={this.props.locked[idx]}
+        locked={locked[idx]}
       />
     ));
-  }
+  };
 
-  render() {
-    return <div>{this.renderedDice()}</div>;
-  }
+  return <div>{renderedDice()}</div>;
 }
-
-export default Dice;
