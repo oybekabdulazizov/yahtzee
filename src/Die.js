@@ -27,7 +27,7 @@ export default function Die({ id, locked, val }) {
   };
 
   let classDie = 'Die ' + (locked ? 'Die-locked' : '');
-  console.log(dices[val]);
+
   return (
     <button onClick={() => toggleDie(id)} className={classDie}>
       <FontAwesomeIcon icon={dices[val]} size='2xl' />
