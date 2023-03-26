@@ -1,0 +1,9 @@
+.RuleRow-row {
+  transition: all 0.3s ease-in-out;
+  padding: 0.1em 0;
+  border-bottom: solid 1px rgb(106, 40, 173);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 0.9em;
+}
