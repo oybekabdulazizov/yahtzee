@@ -8,6 +8,11 @@
   box-shadow: 0 16px 10px -4px rgba(0, 0, 0, 1);
 }
 
+.Die-rolling {
+  box-shadow: none;
+  animation: spin 1s ease-out;
+}
+
 .Die-locked {
   opacity: 50%;
   box-shadow: none;
@@ -20,4 +25,13 @@
 .Die-icon {
   transition: all 0.3s ease-in-out;
   height: 2em;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

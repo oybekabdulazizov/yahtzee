@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { FunctionsContext } from './contexts/game.context';
+import { FunctionsContext, StateContext } from './contexts/game.context';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faSquare,
@@ -13,7 +13,8 @@ import {
 
 import './Die.css';
 
-export default function Die({ id, locked, val, disabled }) {
+export default function Die({ id, locked, val }) {
+  const { rollsLeft, rolling } = useContext(StateContext);
   const { toggleDie } = useContext(FunctionsContext);
 
   const dices = {
@@ -26,10 +27,16 @@ export default function Die({ id, locked, val, disabled }) {
     6: faDiceSix,
   };
 
-  let classDie = 'Die ' + (locked ? 'Die-locked' : '');
+  let classDie = 'Die';
+  if (locked) classDie += ' Die-locked';
+  if (rolling) classDie += ' Die-rolling';
 
   return (
-    <i onClick={() => toggleDie(id)} className={classDie} disabled={disabled}>
+    <i
+      onClick={() => toggleDie(id)}
+      className={classDie}
+      disabled={rollsLeft < 1}
+    >
       <FontAwesomeIcon icon={dices[val]} size='2xl' className='Die-icon' />
     </i>
   );

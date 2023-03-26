@@ -11,13 +11,7 @@ export default function HeaderDice() {
 
   const renderedDice = () => {
     return state.dice.map((dieVal, id) => (
-      <Die
-        val={dieVal}
-        id={id}
-        key={id}
-        locked={state.locked[id]}
-        disabled={state.rollsLeft < 1}
-      />
+      <Die val={dieVal} id={id} key={id} locked={state.locked[id]} />
     ));
   };
 

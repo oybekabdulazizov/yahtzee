@@ -7,6 +7,7 @@ export default function useGameState() {
     dice: Array.from({ length: NUMBER_OF_DICE }).fill(0),
     locked: Array.from({ length: NUMBER_OF_DICE }).fill(false),
     rollsLeft: NUMBER_OF_ROLLS,
+    rolling: false,
     scores: {
       ones: undefined,
       twos: undefined,
@@ -28,6 +29,7 @@ export default function useGameState() {
     if (state.rollsLeft > 0) {
       setState((prevState) => ({
         ...prevState,
+        rolling: true,
         dice: prevState.dice.map((die, idx) =>
           prevState.locked[idx] ? die : Math.ceil(Math.random() * 6)
         ),
@@ -37,6 +39,13 @@ export default function useGameState() {
             : Array.from({ length: NUMBER_OF_DICE }).fill(true),
         rollsLeft: prevState.rollsLeft - 1,
       }));
+
+      setTimeout(() => {
+        setState((prevState) => ({
+          ...prevState,
+          rolling: false,
+        }));
+      }, 1000);
     }
   };
 
