@@ -13,7 +13,7 @@ import {
 
 import './Die.css';
 
-export default function Die({ id, locked, val }) {
+export default function Die({ id, locked, val, disabled }) {
   const { toggleDie } = useContext(FunctionsContext);
 
   const dices = {
@@ -29,8 +29,8 @@ export default function Die({ id, locked, val }) {
   let classDie = 'Die ' + (locked ? 'Die-locked' : '');
 
   return (
-    <button onClick={() => toggleDie(id)} className={classDie}>
-      <FontAwesomeIcon icon={dices[val]} size='2xl' />
-    </button>
+    <i onClick={() => toggleDie(id)} className={classDie} disabled={disabled}>
+      <FontAwesomeIcon icon={dices[val]} size='2xl' className='Die-icon' />
+    </i>
   );
 }
