@@ -32,12 +32,12 @@ export default function Die({ id, locked, val }) {
   if (rolling) classDie += ' Die-rolling';
 
   return (
-    <i
-      onClick={() => toggleDie(id)}
+    <FontAwesomeIcon
+      icon={dices[val]}
+      size='2xl'
       className={classDie}
+      onClick={() => toggleDie(id)}
       disabled={rollsLeft < 1}
-    >
-      <FontAwesomeIcon icon={dices[val]} size='2xl' className='Die-icon' />
-    </i>
+    />
   );
 }

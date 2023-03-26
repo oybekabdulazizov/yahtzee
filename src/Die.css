@@ -1,15 +1,13 @@
 .Die {
+  height: 2em;
   transition: all 0.3s ease-in-out;
-  border: none;
   color: white;
-  height: 3.7em;
-  padding: 0;
-  margin: 0;
-  box-shadow: 0 16px 10px -4px rgba(0, 0, 0, 1);
+  filter: drop-shadow(0 10px 6px rgba(0, 0, 0, 1));
+  box-sizing: current-box;
 }
 
 .Die-rolling {
-  box-shadow: none;
+  filter: none;
   animation: spin 1s ease-out;
 }
 
@@ -19,12 +17,8 @@
 }
 
 .Die[disabled] {
+  filter: none;
   cursor: not-allowed;
-}
-
-.Die-icon {
-  transition: all 0.3s ease-in-out;
-  height: 2em;
 }
 
 @keyframes spin {
