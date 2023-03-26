@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
 import { FunctionsContext, StateContext } from './contexts/game.context';
 
+import './ScoreTable.css';
+
 import RuleRow from './RuleRow';
 import {
   ones,
@@ -23,10 +25,10 @@ export default function ScoreTable() {
   const { doScore } = useContext(FunctionsContext);
 
   return (
-    <div>
-      <section>
-        <h2>Upper</h2>
-        <table>
+    <div className='ScoreTable'>
+      <section className='ScoreTable-section'>
+        <h2 className='ScoreTable-section-header'>Upper</h2>
+        <table className='ScoreTable-table'>
           <tbody>
             <RuleRow
               description={ones.description}
@@ -67,9 +69,9 @@ export default function ScoreTable() {
           </tbody>
         </table>
       </section>
-      <section>
-        <h2>Lower</h2>
-        <table>
+      <section className='ScoreTable-section'>
+        <h2 className='ScoreTable-section-header'>Lower</h2>
+        <table className='ScoreTable-table'>
           <tbody>
             <RuleRow
               description={threeOfKind.description}
@@ -119,6 +121,14 @@ export default function ScoreTable() {
               score={scores.chance}
               doScore={(evt) => doScore('chance', chance.evaluateRoll)}
             />
+          </tbody>
+        </table>
+        <table>
+          <tbody>
+            <tr className='total-score'>
+              <td>Total Score:</td>
+              <td>TODO</td>
+            </tr>
           </tbody>
         </table>
       </section>
