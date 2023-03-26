@@ -1,0 +1,7 @@
+.Game {
+  transition: all 0.3s ease-in-out;
+  height: 85vh;
+  width: 32em;
+  margin: 0;
+  box-shadow: 0px 8px 30px -6px rgba(0, 0, 0, 1);
+}
