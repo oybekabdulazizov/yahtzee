@@ -7,7 +7,7 @@ export default function RuleRow({ name, description, score, doScore }) {
   let classes = `RuleRow-row ${disabled ? `disabled` : ``}`;
   return (
     <tr onClick={disabled ? null : doScore} className={classes}>
-      <td>{name}</td>
+      <td disabled={disabled}>{name}</td>
       <td>{disabled ? score : description}</td>
     </tr>
   );

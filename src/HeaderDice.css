@@ -5,7 +5,7 @@
   justify-content: center;
   align-items: center;
   background-color: rgb(106, 40, 173);
-  padding: 0.5em 0 1em 0;
+  padding: 0.5em 0;
 }
 
 .HeaderDice-title {
@@ -29,7 +29,7 @@
   color: white;
   border: none;
   font-size: 1.4em;
-  padding: 6px 30px;
+  padding: 5px 30px;
   border-radius: 8px;
   margin: 1em 0 0.5em 0;
   background: linear-gradient(to right, #b58ecc, #5de6de);

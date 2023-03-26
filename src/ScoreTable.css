@@ -8,8 +8,8 @@
 
 .ScoreTable-section-header {
   transition: all 0.3s ease-in-out;
-  padding: 0 0 0.1em 0;
-  margin: 0.5em auto;
+  padding-bottom: 0.1em;
+  margin: 0.5em auto 0.2em auto;
   width: 2.8em;
   font-weight: 400;
   border-bottom: solid 1px rgb(106, 40, 173);
