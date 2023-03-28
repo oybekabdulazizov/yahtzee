@@ -6,14 +6,17 @@ import Die from './Die';
 import { FunctionsContext, StateContext } from './contexts/game.context';
 
 export default function HeaderDice() {
-  const state = useContext(StateContext);
+  const { dice, locked, rollsLeft, rolling } = useContext(StateContext);
   const { animateRoll } = useContext(FunctionsContext);
 
   const renderedDice = () => {
-    return state.dice.map((dieVal, id) => (
-      <Die val={dieVal} id={id} key={id} locked={state.locked[id]} />
+    return dice.map((dieVal, id) => (
+      <Die val={dieVal} id={id} key={id} locked={locked[id]} />
     ));
   };
+
+  let rerollBtnText =
+    rollsLeft === 1 ? '1 Roll Left' : `${rollsLeft} Rolls Left`;
 
   return (
     <section className='HeaderDice'>
@@ -23,9 +26,9 @@ export default function HeaderDice() {
         <button
           onClick={animateRoll}
           className='HeaderDice-rollbtn'
-          disabled={state.locked.every((i) => i === true)}
+          disabled={locked.every((x) => x) || rollsLeft === 0 || rolling}
         >
-          {state.rollsLeft} Rerolls Left
+          {rerollBtnText}
         </button>
       </div>
     </section>
