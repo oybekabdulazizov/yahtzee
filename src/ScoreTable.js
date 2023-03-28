@@ -24,6 +24,14 @@ export default function ScoreTable() {
   const { scores } = useContext(StateContext);
   const { doScore } = useContext(FunctionsContext);
 
+  let totalScore = 0;
+  for (const key in scores) {
+    let validScore = scores[key];
+    if (validScore) {
+      totalScore += validScore;
+    }
+  }
+
   return (
     <div className='ScoreTable'>
       <section className='ScoreTable-section'>
@@ -127,7 +135,7 @@ export default function ScoreTable() {
           <tbody>
             <tr className='total-score'>
               <td>Total Score:</td>
-              <td>TODO</td>
+              <td>{totalScore}</td>
             </tr>
           </tbody>
         </table>
