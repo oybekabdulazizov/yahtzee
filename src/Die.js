@@ -13,8 +13,8 @@ import {
 
 import './Die.css';
 
-export default function Die({ id, locked, val }) {
-  const { rollsLeft, rolling } = useContext(StateContext);
+export default function Die({ id, val }) {
+  const { rollsLeft, rolling, locked } = useContext(StateContext);
   const { toggleDie } = useContext(FunctionsContext);
 
   const dices = {
@@ -28,8 +28,8 @@ export default function Die({ id, locked, val }) {
   };
 
   let classDie = 'Die';
-  if (locked) classDie += ' Die-locked';
-  if (rolling) classDie += ' Die-rolling';
+  if (locked[id]) classDie += ' Die-locked';
+  if (rolling && !locked[id]) classDie += ' Die-rolling';
 
   return (
     <FontAwesomeIcon

@@ -5,10 +5,10 @@ export const StateContext = createContext();
 export const FunctionsContext = createContext();
 
 export function GameProvider(props) {
-  const { state, roll, toggleDie, doScore } = useGameState();
+  const { state, animateRoll, toggleDie, doScore } = useGameState();
   return (
     <StateContext.Provider value={state}>
-      <FunctionsContext.Provider value={{ roll, toggleDie, doScore }}>
+      <FunctionsContext.Provider value={{ animateRoll, toggleDie, doScore }}>
         {props.children}
       </FunctionsContext.Provider>
     </StateContext.Provider>

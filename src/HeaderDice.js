@@ -7,7 +7,7 @@ import { FunctionsContext, StateContext } from './contexts/game.context';
 
 export default function HeaderDice() {
   const state = useContext(StateContext);
-  const { roll } = useContext(FunctionsContext);
+  const { animateRoll } = useContext(FunctionsContext);
 
   const renderedDice = () => {
     return state.dice.map((dieVal, id) => (
@@ -21,7 +21,7 @@ export default function HeaderDice() {
       <div className='HeaderDice-dice'>{renderedDice()}</div>
       <div>
         <button
-          onClick={roll}
+          onClick={animateRoll}
           className='HeaderDice-rollbtn'
           disabled={state.locked.every((i) => i === true)}
         >
